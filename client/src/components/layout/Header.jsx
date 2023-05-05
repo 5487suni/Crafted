@@ -16,14 +16,15 @@ const Header = () => {
       product.name.toLowerCase().includes(term.toLowerCase())
     );
     setSearchData(filteredProducts);
+    // 800px:h-[50px] 800px:my-[20px] 800px:flex items-center justify-between
   }
   return (
     <div className={`${styles.section}`}>
-        <div className="hidden 800px:h-[50px] 800px:my-[20px] 800px:flex items-center justify-between">
-            <div className="w-[200px]">
+        <div className="md:h-[50px] md:my-[20px] md:flex items-center justify-between">
+            <div >
                 <Link to="/">
                     <img src={Logoimg} alt="" />
-                </Link>
+                </Link> 
             </div>
              {/* search box */}
           <div className="w-[50%] relative">
@@ -68,7 +69,7 @@ const Header = () => {
               </h1>
             </Link>
           </div>
-            </div>
+          </div>
         </div>
       
   );

@@ -1,22 +1,20 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./src/**/*.{html,js,jsx}"],
-  mode: "jit",
+  content:  ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
-    fontFamily:{
-      Roboto:["Roboto","sans-serif"],
-      Poppins:["Poppins","sans-sarif"],
+    fontFamily: {
+      Roboto: ["Roboto", "sans-serif"],
+      Poppins: ['Poppins', "sans-serif"],
     },
-    extend:{
-      screens:{
-        "1000px":"1050px",
-        "1100px":"1110px",
-        "800px":"800px",
-        "1300px":"1300px",
-        "400px":"400px"
+    extend: {
+      screens: {
+        xl: "1050px",
+        lg: "1110px",
+        md: "800px",
+        sm: "1300px",
+        xs:"400px",
       },
     },
   },
   plugins: [],
 };
-
