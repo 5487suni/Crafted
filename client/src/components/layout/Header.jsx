@@ -37,19 +37,20 @@ const Header = ({activeHeading}) => {
     <>
     <div className={`${styles.section}`}>
         <div className="md:h-[50px] md:my-[20px] md:flex items-center justify-between">
-            <div >
-                <Link to="/">
-                    <img src={Logoimg} alt="" />
-                </Link> 
-            </div>
-             {/* search box */}
+          <div >
+            <Link to="/">
+              <img src={Logoimg} alt="" />
+              </Link> 
+          </div>
+
+          {/* search box */}
           <div className="w-[50%] relative">
             <input
               type="text"
               placeholder="Search Product..."
               value={searchTerm}
               onChange={handleSearchChange}
-              className="h-[40px] w-full px-2 border-[#3957db] border-[2px] rounded-md"
+              className="h-[40px] w-full px-2 border-[#99A98F] border-[2px] rounded-md"
             />
             <AiOutlineSearch
               size={30}
@@ -89,11 +90,11 @@ const Header = ({activeHeading}) => {
         </div>
     </div>
 
-    <div className={`${active === true ? "shadow-sm fixed top-0 left-0 " : null} 800px:flex items-center justify-between w-full bg-[#3321c8] h-[70px]`}>
+    <div className={`${active === true ? "shadow-sm fixed top-0 left-0 " : null} 800px:flex items-center justify-between w-full bg-[#99A98F] h-[70px]`}>
         <div className={`${styles.section} relative ${styles.normalFlex} justify-between`}>
           {/* categories */}
           <div onClick={() => setDropDown(!dropDown)}>
-            <div className="relative h-[60px] mt-[10px] w-[270px] 1000px:block">
+            <div className="relative h-[60px] mt-[10px] w-[270px] 1000px:">
               <BiMenuAltLeft size={30} className="absolute top-3 left-2" />
                 <button 
                 className={`h-[100%] w-full flex justify-between items-center pl-10 bg-white font-sans text-lg font-[500] select-none rounded-t-md`}>
@@ -105,22 +106,20 @@ const Header = ({activeHeading}) => {
                 className="absolute right-2 top-4 cursor-pointer" 
                 onClick={() => setDropDown(!dropDown)}
                 />
-                {
-                  dropDown ? (
+                {dropDown ? (
                     <DropDown
                     categoriesData={categoriesData}
                     setDropDown={setDropDown}
                     />
-                  ) : null
-                }
-                {/* navitems */}
-                <div className={`${styles.normalFlex}`}>
-                  <Navbar active={activeHeading}/>
-                </div>
+                  ) : null }
             </div>
           </div>
+          {/* navitems */}
+          <div className={`${styles.normalFlex}`}>
+            <Navbar active={activeHeading}/>
+          </div>
         </div>
-    </div>
+      </div>
     </>
   );
 };
