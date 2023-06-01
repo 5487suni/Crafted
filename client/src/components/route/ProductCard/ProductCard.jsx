@@ -1,14 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styles from "../../../styles/styles";
-import {
-    AiFillHeart,
-    AiFillStar,
-    AiOutlineEye,
-    AiOutlineHeart,
-    AiOutlineShoppingCart,
-    AiOutlineStar,
-} from "react-icons/ai";
+import { AiFillHeart, AiFillStar, AiOutlineEye, AiOutlineHeart, AiOutlineShoppingCart, AiOutlineStar } from "react-icons/ai";
 import ProductDetailsCard from "../ProductDetailsCard/ProductDetailsCard";
 
 const ProductCard = ({ data }) => {
