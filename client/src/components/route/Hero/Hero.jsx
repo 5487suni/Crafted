@@ -13,8 +13,7 @@ const Hero = () => {
                 Best Collection of <br /> HandiCrafts
                 </h1>
                 <p className="pt-5 text-[16px] font-[Poppins] font-[400] text-[#000000ba]">
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Beatae, assumenda? Quisquam itaque <br /> exercitationem labore vel, dolore
-                    quidem asperiores, laudantium temporibus soluta optio consequatur{" "} <br /> aliquam deserunt officia. Dolorum saepe nulla provident.
+                Welcome to Crafted, your ultimate destination for exquisite handicrafts {" "} <br />created by talented artisans from diverse cultures and traditions. {" "} <br />We take pride in curating a vibrant marketplace where you can discover a wide range of {" "} <br />beautifully crafted products that showcase the artistry and creativity of skilled individuals.{" "} <br /> 
                 </p>
                 <Link to="/products" className="inline-block">
                     <div className={`${styles.button} mt-5`}>
