@@ -22,10 +22,10 @@ const Login = () => {
     }
     const handleLogin=async(e)=>{
         e.preventDefault();
-        const email=usernameRefL;
-        const password=passwordRefL;
+        const email1=usernameRefL.current.value;
+        const password1=passwordRefL.current.value;
         await axios.post(`${server}/user/login-user`,{
-            email,password,
+            email:email1,password:password1,
         }).then((res)=>{
             toast.success("Login Success")
             console.log("success")

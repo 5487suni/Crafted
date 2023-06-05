@@ -96,7 +96,7 @@ const createActivationToken = (user) => {
           password,
         });
       
-        console.log("user saved")
+        console.log("saved")
         sendToken(user, 201, res);
       } catch (error) {
         return next(new ErrorHandler(error.message, 500));
@@ -111,7 +111,7 @@ const createActivationToken = (user) => {
     AsyncError(async (req, res, next) => {
       try {
         const { email, password } = req.body;
-  
+        console.log(email)
         if (!email || !password) {
           return next(new ErrorHandler("Please provide the all fields!", 400));
         }
