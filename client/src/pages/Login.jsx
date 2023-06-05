@@ -1,5 +1,5 @@
 import './Login.css';
-import { useState,useRef } from 'react';
+import { useState,useRef ,useEffect} from 'react';
 import {RxAvatar} from 'react-icons/rx'
 import axios from "axios"
 import {server} from "../server.js"
@@ -7,15 +7,26 @@ import { toast } from "react-toastify";
 import './Login.css';
 import { useNavigate } from 'react-router-dom';
 // import { a } from "react-router-dom";
-
+import {useSelector} from 'react-redux'
 const Login = () => {
     const navigate= useNavigate()
+    const { isAuthenticated} = useSelector((state) => state.user);
+    
     const[avatar,setAvatar]=useState(null)
     const usernameRefR = useRef();
     const emailRefR = useRef();
     const passwordRefR = useRef();
     const usernameRefL = useRef();
     const passwordRefL = useRef();
+
+    useEffect(()=>{
+        console.log(isAuthenticated)
+        if(isAuthenticated===true){   
+            navigate("/");
+            
+        }
+      
+    },[])
     const handleAvatar=(e)=>{
         const file=e.target.files[0]
         setAvatar(file)
@@ -30,6 +41,7 @@ const Login = () => {
             toast.success("Login Success")
             console.log("success")
             navigate("/")
+            window.location.reload(true)
         }).catch((err)=>{
             toast.error(err.response.data.message);
         })
