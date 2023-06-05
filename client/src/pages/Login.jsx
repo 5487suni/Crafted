@@ -26,7 +26,7 @@ const Login = () => {
         const password1=passwordRefL.current.value;
         await axios.post(`${server}/user/login-user`,{
             email:email1,password:password1,
-        }).then((res)=>{
+        },{withCredentials:true}).then((res)=>{
             toast.success("Login Success")
             console.log("success")
             navigate("/")
