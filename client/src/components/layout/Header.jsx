@@ -93,7 +93,7 @@ const Header = ({activeHeading}) => {
         </div>
     </div>
 
-    <div className={`${active === true ? "shadow-sm fixed top-0 left-0 " : null} 800px:flex items-center justify-between w-full bg-[#99A98F] h-[70px]`}>
+    <div className={`${active === true ? "z-40 shadow-sm fixed top-0 left-0 " : null} z-40 800px:flex items-center justify-between w-full bg-[#99A98F] h-[70px]`}>
         <div className={`${styles.section} relative ${styles.normalFlex} justify-between`}>
           {/* categories */}
           <div onClick={() => setDropDown(!dropDown)}>

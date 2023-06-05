@@ -7,16 +7,16 @@ import ProductCard from '../components/route/ProductCard/ProductCard'
 
 const ProductsPage = () => {
     const [searchParams] = useSearchParams();
-    const categoaryData = searchParams.get("categoary");
+    const categoryData = searchParams.get("category");
     const [data, setData] = useState([]);
 
     useEffect(() => {
-        if (categoaryData === null) {
+        if (categoryData === null) {
             const d = productData && productData.sort((a, b) => a.total_sell - b.total_sell);
             setData(d);
         } else {
             const d =
-                productData && productData.filter((i) => i.category === categoaryData);
+                productData && productData.filter((i) => i.category === categoryData);
             setData(d);
         }
     })
