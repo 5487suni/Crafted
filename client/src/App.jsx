@@ -3,11 +3,16 @@ import {BrowserRouter,Routes,Route} from 'react-router-dom'
 import {Login,Home,ActivationPage} from "./Routes.js"
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Store from './redux/store.js'
+import Store from './redux/store'
 import {loadUser} from './redux/actions/user'
+import { useSelector } from 'react-redux';
 const App = () => {
+  const { isAuthenticated} = useSelector((state) => state.user);
   useEffect(()=>{
+
     Store.dispatch(loadUser())
+    
+    console.log(isAuthenticated)
   },[])
   return (
     <BrowserRouter>
