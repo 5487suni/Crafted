@@ -7,7 +7,7 @@ import { AiOutlineMessage, AiFillHeart, AiOutlineHeart, AiOutlineShoppingCart, }
 const ProductDetailsCard = ({ setOpen, data }) => {
     const [count, setCount] = useState(1);
     const [click, setClick] = useState(false);
-    const [select, setSelect] = useState(false);
+    const ProductDetailsCard = ({ setOpen, data }) => {
     const handleMessageSubmit = () => { };
     const decrementCount = () => {
         if (count > 1) {
@@ -120,5 +120,5 @@ const ProductDetailsCard = ({ setOpen, data }) => {
         </div>
     )
 }
-
-export default ProductDetailsCard
+}
+export default ProductDetailsCard;
