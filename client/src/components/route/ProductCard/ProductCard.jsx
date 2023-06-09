@@ -1,8 +1,15 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styles from "../../../styles/styles";
-import { AiFillHeart, AiFillStar, AiOutlineEye, AiOutlineHeart, AiOutlineShoppingCart, AiOutlineStar } from "react-icons/ai";
-import ProductDetailsCard from "../ProductDetailsCard/ProductDetailsCard";
+import { 
+    AiFillHeart, 
+    AiFillStar, 
+    AiOutlineEye, 
+    AiOutlineHeart, 
+    AiOutlineShoppingCart, 
+    AiOutlineStar 
+} from "react-icons/ai";
+import ProductDetailsCard from "../ProductDetailsCard/ProductDetailsCard.jsx";
 
 const ProductCard = ({ data }) => {
     const [click, setClick] = useState(false);

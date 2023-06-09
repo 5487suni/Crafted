@@ -5,6 +5,8 @@ import Categories from '../components/route/Categories/Categories';
 import BestDeals from '../components/route/BestDeals/BestDeals';
 import FeaturedProduct from "../components/route/FeaturedProduct/FeaturedProduct";
 import Events from "../components/Events/Events";
+import Footer from "../components/layout/Footer";
+
 const Home = () => {
   return (
     <div>
@@ -14,6 +16,7 @@ const Home = () => {
         <BestDeals />
         <Events />
         <FeaturedProduct />
+        <Footer />
     </div>
   )
 }
