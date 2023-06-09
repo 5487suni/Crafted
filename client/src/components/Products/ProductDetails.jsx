@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import styles from '../../styles/styles';
 import { AiFillHeart, AiOutlineHeart, AiOutlineShoppingCart, AiOutlineMessage } from 'react-icons/ai';
 
@@ -158,7 +158,7 @@ const ProductDetails = ({ data }) => {
         </div>
     );
 };
-const ProductDetailsInfo = () => {
+const ProductDetailsInfo = ({data}) => {
     const [active, setActive] = useState(1);
 
     return (
@@ -243,13 +243,39 @@ const ProductDetailsInfo = () => {
                                     alt=""
                                     className="w-[50px] h-[50px] rounded-full"
                                 />
-                                <div>
+                                <div className="pl-3">
                                     <h3 className={`${styles.shop_name}`}>
                                         {data.shop.name}
                                     </h3>
                                     <h5 className="pb-3 text-[15px]">(4.5) Ratings</h5>
+
                                 </div>
 
+                            </div>
+                            <p className="pt-2">
+                                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsa omnis
+                                explicabo, ipsum quas qui molestiae? Perspiciatis illo cupiditate, saepe
+                                ratione quae quibusdam nulla, totam doloribus dolores possimus dolor labore ducimus.
+                            </p>
+                        </div>
+                        <div className="w-full 800px:w-[50%] mt-5 800px:flex flex-col items-end">
+                            <div className="text-right">
+                                <h5 className="font-[600]">
+                                    Joined on: <span className="font-[500]">9 June,2023</span>
+                                </h5>
+                                <h5 className="pt-3">
+                                    Total Products: <span className="font-[500]">1,223</span>
+                                </h5>
+                                <h5 className="pt-3">
+                                    Total Reviews: <span className="font-[500]">324</span>
+                                </h5>
+                                <Link to="/">
+                                    <div
+                                        className={`${styles.button} !rounded-[4px] !h-[39.5px] mt-3`}
+                                    >
+                                        <h4 className="text-white">Visit Shop</h4>
+                                    </div>
+                                </Link>
                             </div>
                         </div>
                     </div>
