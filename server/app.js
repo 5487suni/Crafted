@@ -3,6 +3,7 @@ const ErrorHandler=require("./middleware/Error")
 const cookieParser=require("cookie-parser")
 const bodyParser=require("body-parser")
 const user=require("./controller/user")
+const shop=require("./controller/shop")
 const app=express();
 const cors =require("cors")
 app.use(cors({
@@ -18,6 +19,7 @@ app.use(express.json())
 
 
 app.use("/api/user",user)
+app.use("/api/shop",shop)
 if(process.env.NODE_ENV!="PRODUCTION"){
     require("dotenv").config({
         path:"./config/.env"

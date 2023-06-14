@@ -14,3 +14,16 @@ exports.isAuthenticated=AsyncError(async(req,res,next)=>{
 
     next();
 })
+
+exports.isSeller = AsyncError(async(req,res,next) => {
+    const {seller_token} = req.cookies;
+    if(!seller_token){
+        return next(new ErrorHandler("Please login to continue", 401));
+    }
+
+    const decoded = jwt.verify(seller_token, process.env.JWT_SECRET_KEY);
+
+    req.seller = await Shop.findById(decoded.id);
+
+    next();
+});

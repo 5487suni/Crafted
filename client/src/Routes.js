@@ -8,6 +8,8 @@ import FAQPage from "../src/pages/FAQPage"
 import ProductDetailsPage from "../src/pages/ProductDetailsPage"
 import ProfilePage from "../src/pages/ProfilePage"
 import ShopCreate from "./pages/ShopCreate"
+import SellerActivationPage from '../src/pages/SellerActivationPage'
+import ShopLogin from '../src/components/shop/ShopLogin'
 export{
     Login,
     Home,
@@ -19,4 +21,6 @@ export{
     ProductDetailsPage,
     ProfilePage,
     ShopCreate,
+    SellerActivationPage,
+    ShopLogin,
 };
