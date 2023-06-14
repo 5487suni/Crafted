@@ -142,12 +142,13 @@ const createActivationToken = (user) => {
     isAuthenticated,
     AsyncError(async (req, res, next) => {
       try {
+        console.log("finding")
         const user = await User.findById(req.user.id);
-  
+        console.log("found")
         if (!user) {
           return next(new ErrorHandler("User doesn't exists", 400));
         }
-  
+        console.log("found2")
         res.status(200).json({
           success: true,
           user,
@@ -158,4 +159,20 @@ const createActivationToken = (user) => {
     })
   );
   
+  router.get("/logout",isAuthenticated,AsyncError(async(req,res,next)=>{
+    
+    try{
+      console.log("logout")
+      res.cookie("token",null,{
+        expires:new Date(Date.now()),
+        httpOnly:true
+      })
+      res.status(201).json({
+        success:true,
+        message:"logout successful"
+      })
+    }catch(err){
+      return next(new ErrorHandler(err.message,500))
+    }
+  }))
 module.exports=router
