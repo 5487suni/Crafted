@@ -11,7 +11,7 @@ import {
     footerProductLinks,
     footerSupportLinks,
 } from "../../static/data";
-import Logoimg from '../../Assets/logoimg2.png';
+import Logoimgb from '../../Assets/logoimgb.png';
 
 const Footer = () => {
     return (
@@ -37,7 +37,7 @@ const Footer = () => {
             <div className="grid grid-cols-1 sm:gird-cols-3 lg:grid-cols-4 gap-6 sm:px-8 px-5 py-16 sm:text-center">
                 <ul className="px-5 text-center sm:text-start flex sm:block flex-col items-center">
                     <Link to="/">
-                        <img src={Logoimg} alt=""  />
+                        <img src={Logoimgb} alt=""  />
                     </Link>
                     <br />
                     <p>Your ultimate destination for beautiful crafts for beatiful homes.</p>
