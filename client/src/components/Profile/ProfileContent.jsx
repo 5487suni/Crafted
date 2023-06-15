@@ -189,8 +189,12 @@ const AllOrders = () => {
         },
     ];
     
-    const column = [
-        { field: "id", headerName: "Order ID", minWidth: 150, flex: 0.7 },
+    const columns = [
+        { field: "id", 
+          headerName: "Order ID",
+          minWidth: 150, 
+          flex: 0.7 
+        },
     
         {
           field: "status",
@@ -229,7 +233,7 @@ const AllOrders = () => {
           renderCell: (params) => {
             return (
               <>
-                <Link to={`/user/order/${params.id}`}>
+                <Link to={`/order/${params.id}`}>
                   <Button>
                     <AiOutlineArrowRight size={20} />
                   </Button>
@@ -245,9 +249,9 @@ const AllOrders = () => {
       orders &&
         orders.forEach((item) => {
           row.push({
-            id: item._id,
+            id: item.id,
             itemsQty: item.orderItems.length,
-            total: "US$ " + item.totalPrice,
+            total: "US$ " + item.totalprice,
             status: item.orderStatus,
           });
         });
@@ -256,7 +260,7 @@ const AllOrders = () => {
         <div className="pl-8 pt-1">
             <DataGrid
             rows={row}
-            columns={column}
+            columns={columns}
             pageSize={10}
             disableSelectionOnClick
             autoHeight
@@ -280,7 +284,7 @@ const AllRefundOrders = () => {
         },
     ];
     
-    const column = [
+    const columns = [
         { field: "id", headerName: "Order ID", minWidth: 150, flex: 0.7 },
     
         {
@@ -336,9 +340,9 @@ const AllRefundOrders = () => {
       orders &&
         orders.forEach((item) => {
           row.push({
-            id: item._id,
+            id: item.id,
             itemsQty: item.orderItems.length,
-            total: "US$ " + item.totalPrice,
+            total: "US$ " + item.totalprice,
             status: item.orderStatus,
           });
         });
@@ -347,7 +351,7 @@ const AllRefundOrders = () => {
         <div className="pl-8 pt-1">
             <DataGrid
             rows={row}
-            columns={column}
+            columns={columns}
             pageSize={10}
             disableSelectionOnClick
             autoHeight
@@ -371,7 +375,7 @@ const TrackOrder = () => {
         },
     ];
     
-    const column = [
+    const columns = [
         { field: "id", headerName: "Order ID", minWidth: 150, flex: 0.7 },
     
         {
@@ -427,9 +431,9 @@ const TrackOrder = () => {
       orders &&
         orders.forEach((item) => {
           row.push({
-            id: item._id,
+            id: item.id,
             itemsQty: item.orderItems.length,
-            total: "US$ " + item.totalPrice,
+            total: "US$ " + item.totalprice,
             status: item.orderStatus,
           });
         });
@@ -438,7 +442,7 @@ const TrackOrder = () => {
         <div className="pl-8 pt-1">
             <DataGrid
             rows={row}
-            columns={column}
+            columns={columns}
             pageSize={10}
             disableSelectionOnClick
             autoHeight
@@ -462,7 +466,7 @@ const ChangePassword = () => {
         },
     ];
     
-    const column = [
+    const columns = [
         { field: "id", headerName: "Order ID", minWidth: 150, flex: 0.7 },
     
         {
@@ -518,9 +522,9 @@ const ChangePassword = () => {
       orders &&
         orders.forEach((item) => {
           row.push({
-            id: item._id,
+            id: item.id,
             itemsQty: item.orderItems.length,
-            total: "US$ " + item.totalPrice,
+            total: "US$ " + item.totalprice,
             status: item.orderStatus,
           });
         });
@@ -529,7 +533,7 @@ const ChangePassword = () => {
         <div className="pl-8 pt-1">
             <DataGrid
             rows={row}
-            columns={column}
+            columns={columns}
             pageSize={10}
             disableSelectionOnClick
             autoHeight
