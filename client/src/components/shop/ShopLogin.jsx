@@ -95,8 +95,8 @@ const ShopLogin = () => {
                 )}
               </div>
             </div>
-            <div className={`${styles.noramlFlex} justify-between`}>
-              <div className={`${styles.noramlFlex}`}>
+            <div className={`${styles.normalFlex} justify-between`}>
+              <div className={`${styles.normalFlex}`}>
                 <input
                   type="checkbox"
                   name="remember-me"
@@ -122,12 +122,12 @@ const ShopLogin = () => {
             <div>
               <button
                 type="submit"
-                className="group relative w-full h-[40px] flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700"
+                className="group relative w-full h-[40px] flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-[#617A55] hover:bg-[#99A98F]"
               >
                 Submit
               </button>
             </div>
-            <div className={`${styles.noramlFlex} w-full`}>
+            <div className={`${styles.normalFlex} w-full`}>
               <h4>Not have any account?</h4>
               <Link to="/shop-create" className="text-blue-600 pl-2">
                 Sign Up
