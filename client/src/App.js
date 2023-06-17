@@ -15,12 +15,17 @@ import {
   SellerActivationPage,
   ShopLogin,
 } from "./Routes.js"
+import {ShopDashboardPage} from "./routes/ShopRoutes.js";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Store from './redux/store'
 import { loadUser } from './redux/actions/user'
 import { loadSeller } from './redux/actions/user';
 import { useSelector } from 'react-redux';
+import { ShopHomePage } from "./routes/ShopRoutes.js";
+import SellerProtectedRoute from "./routes/SellerProtectedRoutes";
+
+
 const App = () => {
   const { isAuthenticated } = useSelector((state) => state.user);
   const {isSeller,seller} =useSelector((state)=>state.seller)
@@ -43,6 +48,22 @@ const App = () => {
         <Route path="/faq" element={<FAQPage />} />
         <Route path="/shop-create"element={<ShopCreate/>}/>
         <Route path="/shop-login"element={<ShopLogin/>}/>
+        <Route
+          path="/shop/:id"
+          element={
+            <SellerProtectedRoute>
+              <ShopHomePage />
+            </SellerProtectedRoute>
+          }
+        />
+        <Route
+          path='/dashboard'
+          element={
+            <SellerProtectedRoute>
+                <ShopDashboardPage />
+            </SellerProtectedRoute>
+          }
+          />
         <Route path="/profile" element={<ProtectedRoute isAuthenticated={isAuthenticated}><ProfilePage /></ProtectedRoute>} />
       </Routes>
       <ToastContainer
