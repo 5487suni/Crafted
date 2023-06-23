@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { productData } from "../../static/data";
-import ProductCard from "../Route/ProductCard/ProductCard";
-
+import ProductCard from "../route/ProductCard/ProductCard";
+import styles from "../../styles/styles";
+import {Link} from 'react-router-dom'
 const ShopProfileData = ({ isOwner }) => {
   const [active, setActive] = useState(1);
 

@@ -11,9 +11,9 @@ const Shopcreate = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [name,setName] = useState("");
-  const [phoneNumber,setPhoneNumber] = useState();
+  const [phoneNumber,setPhoneNumber] = useState("");
   const [address,setAddress] = useState("");
-  const [zipCode,setZipCode] = useState();
+  const [zipCode,setZipCode] = useState("");
   const [avatar,setAvatar] = useState();
   const [password, setPassword] = useState("");
   const [visible, setVisible] = useState(false);
@@ -39,9 +39,9 @@ const Shopcreate = () => {
         setEmail("");
         setPassword("");
         setAvatar();
-        setZipCode();
+        setZipCode("");
         setAddress("");
-        setPhoneNumber();
+        setPhoneNumber("");
       })
       .catch((error) => {
         toast.error(error.response.data.message);

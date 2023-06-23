@@ -4,7 +4,6 @@ import Hero from "../components/route/Hero/Hero";
 import Categories from '../components/route/Categories/Categories';
 import BestDeals from '../components/route/BestDeals/BestDeals';
 import FeaturedProduct from "../components/route/FeaturedProduct/FeaturedProduct";
-import Events from "../components/Events/Events";
 import Footer from "../components/layout/Footer";
 
 const Home = () => {
@@ -14,7 +13,6 @@ const Home = () => {
         <Hero />
         <Categories />
         <BestDeals />
-        <Events />
         <FeaturedProduct />
         <Footer />
     </div>

@@ -3,19 +3,19 @@ import { useParams } from 'react-router-dom';
 import Header from "../components/layout/Header";
 import Footer from "../components/layout/Footer";
 import ProductDetails from "../components/Products/ProductDetails";
-import { productData } from '../static/data';
+import { useSelector } from 'react-redux';
+
 
 const ProductDetailsPage = () => {
     const { name } = useParams();
     const [data,setData] = useState(null);
     const productName = name.replace(/-/g, " ");
-
-    console.log(name);
+    const {allProducts}=useSelector((state)=>state.products)
     
     useEffect(() => {
-        const data = productData.find((i) => i.name === productName);
+        const data = allProducts.find((i) => i.name === productName);
         setData(data);
-    }, [])
+    }, [allProducts])
 
     return (
         <div>

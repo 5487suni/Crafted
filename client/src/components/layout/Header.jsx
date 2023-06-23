@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import {Link} from 'react-router-dom';
 import styles from '../../styles/styles';
 import Logoimg from '../../Assets/logoimg2.png'
-import {categoriesData, productData} from "../../static/data";
+import {categoriesData} from "../../static/data";
 import {AiOutlineSearch, AiOutlineHeart, AiOutlineShoppingCart,} from "react-icons/ai";
 import {IoIosArrowForward ,IoIosArrowDown} from "react-icons/io";
 import {BiMenuAltLeft} from "react-icons/bi";
@@ -16,6 +16,7 @@ import Wishlist from "../wishlist/Wishlist";
 import { RxCross1 } from "react-icons/rx"; 
 const Header = ({activeHeading}) => {
   const { isAuthenticated, user,loading } = useSelector((state) => state.user);
+  const {allProducts}=useSelector((state)=>state.products)
   // const { wishlist } = useSelector((state) => state.wishlist);
   // const { cart } = useSelector((state) => state.cart);
   const [searchTerm, setSearchTerm] = useState("");
@@ -29,7 +30,7 @@ const Header = ({activeHeading}) => {
     const term = e.target.value;
     setSearchTerm(term) ; 
 
-    const filteredProducts = productData && productData.filter((product) =>
+    const filteredProducts = allProducts && allProducts.filter((product) =>
       product.name.toLowerCase().includes(term.toLowerCase())
     );
     setSearchData(filteredProducts);
@@ -77,7 +78,7 @@ const Header = ({activeHeading}) => {
                       <Link to={`/product/${Product_name}`}>
                         <div className="w-full flex items-start-py-3">
                           <img
-                            src={i.image_Url[0].url}
+                            src={`${backend_url}/${i.images[0]}`}
                             alt=""
                             className="w-[40px] h-[40px] mr-[10px]"
                           />

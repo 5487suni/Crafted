@@ -4,19 +4,21 @@ import Header from '../components/layout/Header'
 import { useSearchParams } from 'react-router-dom'
 import { productData } from '../static/data'
 import ProductCard from '../components/route/ProductCard/ProductCard'
+import { useSelector } from 'react-redux'
 
 const ProductsPage = () => {
     const [searchParams] = useSearchParams();
     const categoryData = searchParams.get("category");
     const [data, setData] = useState([]);
+    const {allProducts}=useSelector((state)=>state.products)
 
     useEffect(() => {
         if (categoryData === null) {
-            const d = productData && productData.sort((a, b) => a.total_sell - b.total_sell);
+            const d = allProducts && allProducts.sort((a, b) => a.total_sell - b.total_sell);
             setData(d);
         } else {
             const d =
-                productData && productData.filter((i) => i.category === categoryData);
+                allProducts && allProducts.filter((i) => i.category === categoryData);
             setData(d);
         }
     })

@@ -2,13 +2,14 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import styles from '../../styles/styles';
 import { AiFillHeart, AiOutlineHeart, AiOutlineShoppingCart, AiOutlineMessage } from 'react-icons/ai';
+import { backend_url } from '../../server';
 
 const ProductDetails = ({ data }) => {
     const [count, setCount] = useState(1);
     const [click, setClick] = useState(false);
     const [select, setSelect] = useState(1);
     const navigate = useNavigate();
-
+    console.log(data)
     const decrementCount = () => {
         if (count > 1) {
             setCount(count - 1);
@@ -26,12 +27,12 @@ const ProductDetails = ({ data }) => {
     return (
         <div className="bg-white">
             {data ? (
-                <div className={`${styles.section} w-[90%] 800px:w-[80%]`}>
+                <div className={`${styles.section} w-[90%] md:w-[80%]`}>
                     <div className="w-full py-5">
-                        <div className="block w-full 800px:flex">
-                            <div className="w-full 800px:w-[50%]">
+                        <div className="block w-full md:flex">
+                            <div className="w-full md:w-[50%]">
                                 <img
-                                    src={data.image_Url[select].url}
+                                    src={`${backend_url}/${data.images&&data.images[0]}`}
                                     alt=""
                                     className="w-[80%]"
                                 />
@@ -42,7 +43,7 @@ const ProductDetails = ({ data }) => {
                                             } cursor-pointer`}
                                     >
                                         <img
-                                            src={data?.image_Url[0].url}
+                                            src={`${backend_url}/${data?.images[0]}`}
                                             alt=""
                                             className='h-[200px]'
                                             onClick={() => setSelect(0)}
@@ -51,7 +52,7 @@ const ProductDetails = ({ data }) => {
 
                                     <div className={`${select === 1 ? "border" : "null"} cursor-pointer`}>
                                         <img
-                                            src={data?.image_Url[1].url}
+                                            src={`${backend_url}/${data?.images[1]}`}
                                             alt=""
                                             className='h-[200px]'
                                             onClick={() => setSelect(1)}
@@ -59,7 +60,7 @@ const ProductDetails = ({ data }) => {
                                     </div>
                                 </div>
                             </div>
-                            <div className="w-full 800px:w-[50%] pt-5">
+                            <div className="w-full md:w-[50%] pt-5">
                                 <h1 className={`${styles.productTitle}`}>{data.name}</h1>
                                 <p>{data.description}</p>
                                 <div className="flex pt-3">
@@ -67,7 +68,7 @@ const ProductDetails = ({ data }) => {
                                         {data.discountPrice}$
                                     </h4>
                                     <h3 className={`${styles.price}`}>
-                                        {data.price ? data.price + "$" : null}
+                                        {data.originalPrice ? data.originalPrice + "$" : null}
                                     </h3>
                                 </div>
 
@@ -120,7 +121,7 @@ const ProductDetails = ({ data }) => {
                                 <div className="flex items-center pt-8">
 
                                     <img
-                                        src={data.shop.shop_avatar.url}
+                                        src={`${backend_url}/${data.shop.avatar}`}
                                         alt=""
                                         className="w-[50px] h-[50px] rounded-full mr-2"
                                     />
@@ -161,7 +162,7 @@ const ProductDetailsInfo = ({data}) => {
         <div className="bg -[#f5f6fb] px-3 800px:px-10 py-2 rounded">
             <div className="w-full flex justify-between border-b pt-10 pb-2">
                 <div className="relative">
-                    <h5 className={"text-[#000] setActive(value: React.SetStateAction<number>): void 800px:text-[20px]"}
+                    <h5 className={"text-[#000] setActive(value: React.SetStateAction<number>): void md:text-[20px]"}
                         onClick={() => setActive(1)}
                     >
                         Product Details
@@ -173,7 +174,7 @@ const ProductDetailsInfo = ({data}) => {
                     }
                 </div>
                 <div className="relative">
-                    <h5 className={"text-[#000] setActive(value: React.SetStateAction<number>): void 800px:text-[20px]"}
+                    <h5 className={"text-[#000] setActive(value: React.SetStateAction<number>): void md:text-[20px]"}
                         onClick={() => setActive(2)}
                     >
                         Product Reviews
@@ -185,7 +186,7 @@ const ProductDetailsInfo = ({data}) => {
                     }
                 </div>
                 <div className="relative">
-                    <h5 className={"text-[#000] setActive(value: React.SetStateAction<number>): void 800px:text-[20px]"}
+                    <h5 className={"text-[#000] setActive(value: React.SetStateAction<number>): void md:text-[20px]"}
                         onClick={() => setActive(3)}
                     >
                         Seller Information
@@ -231,11 +232,11 @@ const ProductDetailsInfo = ({data}) => {
             }
             {
                 active === 3 && (
-                    <div className="w-full block 800px:flex p-5">
-                        <div className="w-full 800px:w-[50%]">
+                    <div className="w-full block md:flex p-5">
+                        <div className="w-full md:w-[50%]">
                             <div className="flex items-center">
                                 <img
-                                    src={data.shop.shop_avatar.url}
+                                    src={`${backend_url}/${data.shop.avatar}`}
                                     alt=""
                                     className="w-[50px] h-[50px] rounded-full"
                                 />
@@ -254,7 +255,7 @@ const ProductDetailsInfo = ({data}) => {
                                 ratione quae quibusdam nulla, totam doloribus dolores possimus dolor labore ducimus.
                             </p>
                         </div>
-                        <div className="w-full 800px:w-[50%] mt-5 800px:flex flex-col items-end">
+                        <div className="w-full md:w-[50%] mt-5 md:flex flex-col items-end">
                             <div className="text-right">
                                 <h5 className="font-[600]">
                                     Joined on: <span className="font-[500]">9 June,2023</span>

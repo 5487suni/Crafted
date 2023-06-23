@@ -4,13 +4,14 @@ import Header from '../components/layout/Header'
 import { useSearchParams } from 'react-router-dom'
 import { productData } from '../static/data'
 import ProductCard from '../components/route/ProductCard/ProductCard'
+import { useSelector } from 'react-redux'
 
 const BestSellingPage = () => {
 
   const [data, setData] = useState([]);
-
+  const {allProducts}=useSelector((state)=>state.products)
   useEffect(() => {
-    const d = productData && productData.sort((a, b) => b.total_sell - a.total_sell);
+    const d = allProducts && allProducts.sort((a, b) => b.total_sell - a.total_sell);
     setData(d);
   }, []);
 

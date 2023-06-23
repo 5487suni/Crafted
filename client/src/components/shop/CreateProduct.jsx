@@ -4,9 +4,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { categoriesData } from "../../static/data";
 import { toast } from "react-toastify";
+import { createProduct } from "../../redux/actions/product";
 
 const CreateProduct = () => {
-  const { seller } = useSelector((state) => state.seller);
+  const { isLoading,success,error } = useSelector((state) => state.products);
+  const {seller} =useSelector((state)=>state.seller)
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -15,13 +17,23 @@ const CreateProduct = () => {
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState("");
   const [tags, setTags] = useState("");
-  const [originalPrice, setOriginalPrice] = useState();
-  const [discountPrice, setDiscountPrice] = useState();
-  const [stock, setStock] = useState();
+  const [originalPrice, setOriginalPrice] = useState("");
+  const [discountPrice, setDiscountPrice] = useState("");
+  const [stock, setStock] = useState("");
+
+  useEffect(()=>{
+    if(error){
+      toast.error(error)
+    }
+    if(success){
+      toast.success("Product created successfully")
+      navigate("/dashboard")
+      window.location.reload(true)
+    }
+  },[dispatch,error,success])
 
   const handleImageChange = (e) => {
     e.preventDefault();
-
     let files = Array.from(e.target.files);
     setImages((prevImages) => [...prevImages, ...files]);
   };
@@ -29,10 +41,24 @@ const CreateProduct = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const newForm=new FormData()
+    images.forEach((image)=>{
+      newForm.append("images",image)
+    })
+    newForm.append("name",name)
+    newForm.append("description",description)
+    newForm.append("category",category)
+    newForm.append("tags",tags)
+    newForm.append("originalPrice",originalPrice)
+    newForm.append("discountPrice",discountPrice)
+    newForm.append("stock",stock)
+    newForm.append("shopId",seller._id)
+    dispatch(createProduct(newForm))
+    
   };
 
   return (
-    <div className="w-[90%] 800px:w-[50%] bg-white  shadow h-[80vh] rounded-[4px] p-3 overflow-y-scroll">
+    <div className="w-[90%] md:w-[50%] bg-white  shadow h-[80vh] rounded-[4px] p-3 overflow-y-scroll">
       <h5 className="text-[30px] font-Poppins text-center">Create Product</h5>
       {/* create product form */}
       <form onSubmit={handleSubmit}>
