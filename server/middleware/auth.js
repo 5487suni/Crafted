@@ -2,6 +2,7 @@ const ErrorHandler = require("../utils/ErrorHandler")
 const AsyncError= require("./AsyncError")
 const jwt=require("jsonwebtoken")
 const User=require('../models/user')
+const Shop=require("../models/shop")
 exports.isAuthenticated=AsyncError(async(req,res,next)=>{
     const {token}=req.cookies
     if(!token){

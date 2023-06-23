@@ -142,13 +142,13 @@ const createActivationToken = (user) => {
     isAuthenticated,
     AsyncError(async (req, res, next) => {
       try {
-        console.log("finding")
+        // console.log("finding")
         const user = await User.findById(req.user.id);
-        console.log("found")
+        // console.log("found")
         if (!user) {
           return next(new ErrorHandler("User doesn't exists", 400));
         }
-        console.log("found2")
+        // console.log("found2")
         res.status(200).json({
           success: true,
           user,

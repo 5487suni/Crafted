@@ -6,7 +6,7 @@ const jwt = require("jsonwebtoken");
 const sendMail = require("../utils/sendMail");
 const sendToken = require("../utils/jwt");
 const Shop = require("../models/shop");
-const { isAuthenticated, isSeller, isAdmin } = require("../middleware/auth");
+const {isSeller} = require("../middleware/auth");
 const { upload } = require("../multer");
 const AsyncError = require("../middleware/AsyncError");
 const ErrorHandler = require("../utils/ErrorHandler");
@@ -43,7 +43,7 @@ router.post("/create-shop", upload.single("file"), async (req, res, next) => {
   
       const activationToken = createActivationToken(seller);
   
-      const activationUrl = `https://eshop-tutorial-cefl.vercel.app/seller/activation/${activationToken}`;
+      const activationUrl = `http://localhost:3000/seller/activation/${activationToken}`;
   
       try {
         await sendMail({
@@ -66,7 +66,7 @@ router.post("/create-shop", upload.single("file"), async (req, res, next) => {
   // create activation token
   const createActivationToken = (seller) => {
     return jwt.sign(seller, process.env.ACTIVATION_SECRET, {
-      expiresIn: "5m",
+      expiresIn: "30m",
     });
   };
   
@@ -76,24 +76,24 @@ router.post("/create-shop", upload.single("file"), async (req, res, next) => {
     AsyncError(async (req, res, next) => {
       try {
         const { activation_token } = req.body;
-  
+        // console.log(activation_token)
         const newSeller = jwt.verify(
           activation_token,
           process.env.ACTIVATION_SECRET
         );
-  
+        //console.log("verified")
         if (!newSeller) {
           return next(new ErrorHandler("Invalid token", 400));
         }
         const { name, email, password, avatar, zipCode, address, phoneNumber } =
           newSeller;
-  
+        
         let seller = await Shop.findOne({ email });
-  
+        
         if (seller) {
           return next(new ErrorHandler("User already exists", 400));
         }
-  
+        try{
         seller = await Shop.create({
           name,
           email,
@@ -103,7 +103,10 @@ router.post("/create-shop", upload.single("file"), async (req, res, next) => {
           address,
           phoneNumber,
         });
-  
+      }catch(err){
+        console.log(err)
+      }
+       
         sendShopToken(seller, 201, res);
       } catch (error) {
         return next(new ErrorHandler(error.message, 500));
@@ -147,10 +150,11 @@ router.post("/create-shop", upload.single("file"), async (req, res, next) => {
   router.get(
     "/getSeller",
     isSeller,
-    AsyncError(async (req, res, next) => {
+    async (req, res, next) => {
       try {
+        //console.log("1")
         const seller = await Shop.findById(req.seller._id);
-  
+        //console.log("found")
         if (!seller) {
           return next(new ErrorHandler("User doesn't exists", 400));
         }
@@ -160,9 +164,11 @@ router.post("/create-shop", upload.single("file"), async (req, res, next) => {
           seller,
         });
       } catch (error) {
+        console.log(error)
         return next(new ErrorHandler(error.message, 500));
+        
       }
-    })
+    }
   );
   
   // log out from shop

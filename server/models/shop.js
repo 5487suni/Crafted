@@ -14,7 +14,7 @@ const shopSchema = new mongoose.Schema({
   password: {
     type: String,
     required: [true, "Please enter your password"],
-    minLength: [6, "Password should be greater than 6 characters"],
+    minLength: [4, "Password should be greater than 6 characters"],
     select: false,
   },
   description: {
@@ -51,7 +51,6 @@ const shopSchema = new mongoose.Schema({
     {
       amount: {
         type: Number,
-        required: true,
       },
       status: {
         type: String,
@@ -76,9 +75,9 @@ const shopSchema = new mongoose.Schema({
 
 // Hash password
 shopSchema.pre("save", async function (next) {
-  if (!this.isModified("password")) {
-    next();
-  }
+  // if (!this.isModified("password")) {
+  //   next();
+  // }
   this.password = await bcrypt.hash(this.password, 10);
 });
 
